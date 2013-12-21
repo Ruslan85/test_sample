@@ -5,6 +5,9 @@ gem 'mysql2'
 
 group :development, :test do
   gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'guard-spork'
+  gem 'spork'
 end
 
 group :assets do
@@ -16,7 +19,7 @@ end
 gem 'jquery-rails'
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '1.1.2'
 end
 
 group :production do
