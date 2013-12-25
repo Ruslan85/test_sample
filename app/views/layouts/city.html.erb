@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= full_title(yield(:title)) %></title>
+    <%= stylesheet_link_tag "city", :media => "all" %>
+    <%= javascript_include_tag "city" %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= time_zone(@time) %>
+    <%= set_pictures(yield(:img)) %>
+    <%= yield %>
+  </body>
+</html>

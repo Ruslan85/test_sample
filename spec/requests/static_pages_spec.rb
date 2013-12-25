@@ -2,63 +2,98 @@ require 'spec_helper'
 
 describe "Static pages" do
 
-  let(:base_title) { "Ruby on Rails Tutorial Sample App" }
+  subject { page }
 
   describe "Home page" do
+    before { visit root_path }
 
-    it "should have the h1 'Sample App'" do
-      visit '/static_pages/home'
-      page.should have_selector('h1', :text => 'Sample App')
-    end
+    let(:heading)    { 'Sample App' }
+    let(:page_title) { '' }
 
-    it "should have the base title" do
-      visit '/static_pages/home'
-      page.should have_selector('title',
-                        :text => "Ruby on Rails Tutorial Sample App")
-    end
-
-    it "should not have a custom page title" do
-      visit '/static_pages/home'
-      page.should_not have_selector('title', :text => '| Home')
-    end
+    it { should_not have_selector 'title', text: '| Home' }
   end
 
   describe "Help page" do
+    before { visit help_path }
 
-    it "should have the h1 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('h1', :text => 'Help')
-    end
-
-    it "should have the title 'Help'" do
-      visit '/static_pages/help'
-      page.should have_selector('title', :text => "#{base_title} | Help")
-    end
+    let(:heading)    { 'Help' }
+    let(:page_title) { 'Help' }
   end
 
   describe "About page" do
+    before { visit about_path }
 
-    it "should have the h1 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('h1', :text => 'About Us')
-    end
-
-    it "should have the title 'About Us'" do
-      visit '/static_pages/about'
-      page.should have_selector('title', :text => "#{base_title} | About Us")
-    end
+    let(:heading)    { 'About' }
+    let(:page_title) { 'About Us' }
   end
 
   describe "Contact page" do
+    before { visit contact_path }
 
-    it "should have the h1 'Contact'" do
-      visit '/static_pages/contact'
-      page.should have_selector('h1', :text => 'Contact')
+    let(:heading)    { 'Contact' }
+    let(:page_title) { 'Contact' }
+  end
+
+  it "should have the right links on the layout" do
+    visit root_path
+    click_link "About"
+    page.should have_selector 'title', text: full_title('About Us')
+    click_link "Help"
+    page.should have_selector 'title', text: full_title('Help')
+    click_link "Contact"
+    page.should have_selector 'title', text: full_title('Contact')
+    click_link "Home"
+    click_link "Sign up now!"
+    page.should have_selector 'title', text: full_title('Sign up')
+    click_link "sample app"
+    page.should have_selector 'title', text: full_title('')
+  end
+
+
+
+
+
+
+
+
+
+
+  describe "Paris page" do
+
+    it "should have the h1 'Paris'" do
+      visit '/static_pages/paris'
+      page.should have_selector('h1', text: 'Paris')
     end
 
-    it "should have the title 'Contact'" do
-      visit '/static_pages/contact'
-      page.should have_selector('title', :text => "#{base_title} | Contact")
+    it "should have the images" do
+      visit '/static_pages/paris'
+      page.should have_css('img', :src => "//upload.wikimedia.org/wikipedia/commons/thumb/a/ab/NotreDameI.jpg/750px-NotreDameI.jpg")
+    end
+  end
+
+  describe "Tokyo page" do
+
+    it "should have the h1 'Tokyo'" do
+      visit '/static_pages/tokyo'
+      page.should have_selector('h1', :text => 'Tokyo')
+    end
+
+    it "should have the images" do
+      visit '/static_pages/tokyo'
+      page.should have_selector('img', :src => "//upload.wikimedia.org/wikipedia/commons/thumb/4/49/Tokyo_station05s3872.jpg/800px-Tokyo_station05s3872.jpg")
+    end
+  end
+
+  describe "New-York page" do
+
+    it "should have the h1 'New-York'" do
+      visit '/static_pages/new_york'
+      page.should have_selector('h1', :text => 'New-York')
+    end
+
+    it "should have the images" do
+      visit '/static_pages/new_york'
+      page.should have_selector('img', :src => "//upload.wikimedia.org/wikipedia/commons/thumb/4/48/Unisphere-20100731.jpg/800px-Unisphere-20100731.jpg")
     end
   end
 end
