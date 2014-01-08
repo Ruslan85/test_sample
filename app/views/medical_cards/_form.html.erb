@@ -1,0 +1,65 @@
+<%= form_for(@card) do |f| %>
+  <% if @card.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@card.errors.count, "error") %> prohibited this card from being saved:</h2>
+
+      <ul>
+      <% @card.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @card, html: {multipart: true} do |f| %>
+
+      <%= f.label :user %>
+      <%= f.number_field :user_id %>
+
+      <%= f.label :image %>
+      <%= f.file_field :image %>
+
+      <%= f.label :remote_image_url, "or image URL" %>
+      <%= f.text_field :remote_image_url %>
+
+      <%= f.label :birthday %>
+      <%= f.date_select :birthday, start_year: 1905, order: [:day, :month, :year] %>
+
+      <%= f.label :birthplace %>
+      <%= f.text_field :birthplace %>
+
+      <%= f.label :sex %>
+      <%= f.text_field :sex %>
+
+      <%= f.label :diagnosis %>
+      <%= f.text_field :diagnosis %>
+
+      <%= f.label :medicament %>
+      <%= f.text_field :medicament %>
+
+      <%= f.label :patient_conditions %>
+      <%= f.text_field :patient_conditions %>
+
+      <%= f.label :treatment_status %>
+      <%= f.text_field :treatment_status %>
+      
+      <%= f.label :hospitalization %>
+      <%= f.radio_button :hospitalization, "Need" %>Need
+      <%= f.radio_button :hospitalization, "Don't need" %>Don't need
+
+      <%= f.label :blood_groop %>
+      <%= f.number_field :blood_groop %>
+
+      <%= f.label :temporary_incapacitated %>
+      <%= f.radio_button :temporary_incapacitated, "Yes" %>Yes
+      <%= f.radio_button :temporary_incapacitated, "No" %>No
+      <br /><br />
+      
+      <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

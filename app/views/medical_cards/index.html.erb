@@ -1,0 +1,43 @@
+<h1>Listing Medical_Cards</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>User</th>
+    <th>Birthday</th>
+    <th>Birthplace</th>
+    <th>Sex</th>
+    <th>Blood_groop</th>
+    <th>Diagnosis</th>
+    <th>Hospitalization</th>
+    <th>Medicament</th>
+    <th>Patient_conditions</th>
+    <th>Temporary_incapacitated</th>
+    <th>Treatment_status</th>
+    <th>Buttoms</th>
+  </tr>
+
+  <% @cards.each do |card| %>
+    <tr>
+      <td><%= card.user_id %></td>
+      <td><%= card.birthday %></td>
+      <td><%= card.birthplace %></td>
+      <td><%= card.sex %></td>
+      <td><%= card.blood_groop %></td>
+      <td><%= card.diagnosis %></td>
+      <td><%= card.hospitalization %></td>
+      <td><%= card.medicament %></td>
+      <td><%= card.patient_conditions %></td>
+      <td><%= card.temporary_incapacitated %></td>
+      <td><%= card.treatment_status %></td>
+      <td>
+        <%= link_to 'Show', card %>
+        <%= link_to 'Edit', edit_medical_card_path(card) %>
+        <%= link_to 'Destroy', card, method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Medical Card', new_medical_card_path %>

@@ -1,0 +1,41 @@
+<h1>Listing Analyzes</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Urine</th>
+    <th>Feces</th>
+    <th>Sperm</th>
+    <th>Biochemical</th>
+    <th>Blood_clotting</th>
+    <th>Protein</th>
+    <th>Diabetes</th>
+    <th>HIV</th>
+    <th>STDS</th>
+    <th>Syphilis</th>
+    <th>Buttoms</th>
+  </tr>
+
+  <% @analyzes.each do |analysis| %>
+    <tr>
+      <td><%= analysis.urine %></td>
+      <td><%= analysis.feces %></td>
+      <td><%= analysis.sperm %></td>
+      <td><%= analysis.biochemical %></td>
+      <td><%= analysis.blood_clotting %></td>
+      <td><%= analysis.protein %></td>
+      <td><%= analysis.diabetes %></td>
+      <td><%= analysis.hiv %></td>
+      <td><%= analysis.stds %></td>
+      <td><%= analysis.syphilis %></td>
+      <td>
+        <%= link_to 'Show', analyze_path(analysis) %>
+        <%= link_to 'Edit', edit_analyze_path(analysis) %>
+        <%= link_to 'Destroy', analyze_path(analysis), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Analys', new_analyze_path %>

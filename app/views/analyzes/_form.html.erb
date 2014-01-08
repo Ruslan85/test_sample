@@ -1,0 +1,83 @@
+<% 
+  #if @analysis.new_record?
+  #  target_url = analyzes_path
+  #else
+ #   target_url = analyze_path
+  #end
+%>
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for @analysis, url: @analysis.new_record? ? analyzes_path : analyze_path, html: {multipart: true} do |f| %>
+
+    <% if @analysis.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@analysis.errors.count, "error") %> prohibited this analysis from being saved:</h2>
+
+        <ul>
+        <% @analysis.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+      <%= f.label :urine %>
+      <%= f.radio_button :urine, "1" %> Yes
+      <%= f.radio_button :urine, "0" %> No
+      <br /><br />
+
+      <%= f.label :feces %>
+      <%= f.radio_button :feces, "1" %>Yes
+      <%= f.radio_button :feces, "0" %>No
+      <br /><br />
+
+
+      <%= f.label :sperm %>
+      <%= f.radio_button :sperm, "1" %>Yes
+      <%= f.radio_button :sperm, "0" %>No
+      <br /><br />
+
+
+      <%= f.label :biochemical %>
+      <%= f.radio_button :biochemical, "1" %>Yes
+      <%= f.radio_button :biochemical, "0" %>No
+      <br /><br />
+
+
+      <%= f.label :blood_clotting %>
+      <%= f.radio_button :blood_clotting, "1" %>Yes
+      <%= f.radio_button :blood_clotting, "0" %>No
+      <br /><br />
+
+      <%= f.label :protein %>
+      <%= f.radio_button :protein, "1" %>Yes
+      <%= f.radio_button :protein, "0" %>No
+      <br /><br />
+
+      <%= f.label :diabetes %>
+      <%= f.radio_button :diabetes, "1" %>True
+      <%= f.radio_button :diabetes, "0" %>False
+      <br /><br />
+
+
+      <%= f.label :hiv %>
+      <%= f.radio_button :hiv, "1" %>True
+      <%= f.radio_button :hiv, "0" %>False
+      <br /><br />
+      
+      <%= f.label :stds %>
+      <%= f.radio_button :stds, "1" %>True
+      <%= f.radio_button :stds, "0" %>False
+      <br /><br />
+
+
+      <%= f.label :syphilis %>
+      <%= f.radio_button :syphilis, "1" %>True
+      <%= f.radio_button :syphilis, "0" %>False
+      <br /><br />
+      
+      <%= f.submit "Create", class: "btn btn-large btn-primary" %>
+    <% end %>
+  </div>
+</div>
+

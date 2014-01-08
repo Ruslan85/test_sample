@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
   resources :users
+  resources :analyzes
+  resources :medical_cards
 
   root to: 'static_pages#home'
 

@@ -10,6 +10,7 @@ group :development, :test do
   gem 'guard-rspec'
   gem 'guard-spork'
   gem 'spork'
+  gem 'therubyracer', :platform => :ruby
 end
 
 group :assets do
@@ -19,6 +20,9 @@ group :assets do
 end
 
 gem 'jquery-rails'
+gem 'carrierwave'
+gem 'rmagick', '2.13.2', :git=>'http://github.com/rmagick/rmagick.git'
+gem 'faker', '1.1.2'
 
 group :development do
   gem 'annotate', '2.5.0'

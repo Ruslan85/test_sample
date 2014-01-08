@@ -11,7 +11,47 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131226150952) do
+ActiveRecord::Schema.define(:version => 20140106121951) do
+
+  create_table "analyzes", :force => true do |t|
+    t.boolean  "urine",          :default => false
+    t.boolean  "feces",          :default => false
+    t.boolean  "sperm",          :default => false
+    t.boolean  "hiv",            :default => false
+    t.boolean  "syphilis",       :default => false
+    t.boolean  "stds",           :default => false
+    t.boolean  "diabetes",       :default => false
+    t.boolean  "blood_clotting", :default => false
+    t.boolean  "biochemical",    :default => false
+    t.boolean  "protein",        :default => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  create_table "conclusions", :force => true do |t|
+    t.integer  "analysis_id"
+    t.integer  "medical_card_id"
+    t.boolean  "infected"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
+
+  create_table "medical_cards", :force => true do |t|
+    t.date     "birthday"
+    t.text     "birthplace"
+    t.string   "sex"
+    t.text     "diagnosis"
+    t.text     "medicament"
+    t.text     "patient_conditions"
+    t.text     "treatment_status"
+    t.boolean  "hospitalization"
+    t.integer  "blood_groop"
+    t.boolean  "temporary_incapacitated"
+    t.datetime "created_at",              :null => false
+    t.datetime "updated_at",              :null => false
+    t.integer  "user_id"
+    t.string   "image"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "name"
