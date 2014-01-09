@@ -1,0 +1,20 @@
+<h1>Listing Analyzes</h1>
+
+<table class="table table-bordered">
+  <tr>
+    <th>Email</th>
+    <th>Text</th>
+  </tr>
+
+  <% @acers.each do |acer| %>
+    <tr>
+      <td><%= acer.email %></td>
+      <td><%= acer.text %></td>
+      <td>
+        <%= link_to 'Show', acer_path(acer) %>
+        <%= link_to 'Edit', edit_acer_path(acer) %>
+        <%= link_to 'Destroy', acer_path(acer), method: :delete, data: { confirm: 'Are you sure?' } %>
+      </td>
+    </tr>
+  <% end %>
+</table>
