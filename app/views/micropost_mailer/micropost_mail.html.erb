@@ -1,0 +1,5 @@
+<p><%= @micropost.email %>,</p>
+
+<p>T<%= @micropost.body %></p>
+
+<p><%= link_to "Edit Profile",  edit_micropost_url(@micropost, :host => "localhost:3000") %></p>

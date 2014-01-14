@@ -1,9 +1,18 @@
 SampleApp::Application.routes.draw do
 
+  get "home/index"
+  
+  resources :messages, only: [ :create, :index ]
+  
+  resources :microposts do
+    collection do
+      post "send_email"
+    end
+  end
+
   resources :users
   resources :analyzes
   resources :medical_cards
-  resources :acers
 
   root to: 'static_pages#home'
 

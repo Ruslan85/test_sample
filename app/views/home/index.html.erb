@@ -1,0 +1,46 @@
+<h1 style="margin-top: 30px;">Статистика</h1>
+
+<div class="hero-unit">
+	<p>
+		<i>Кол-во долбаебов</i>
+		<i class= "icon-user"></i>
+		<strong><%= User.count %></strong>
+	</p>
+</div>
+
+<table class="table table-bordered">
+
+  <tr>
+    <th>Card_number</th>
+      <th>Analysis_number</th>
+      <th>Urine</th>
+      <th>Feces</th>
+      <th>Sperm</th>
+      <th>Biochemical</th>
+      <th>Blood_clotting</th>
+      <th>Protein</th>
+      <th>Diabetes</th>
+      <th>HIV</th>
+      <th>STDS</th>
+      <th>Syphilis</th>
+  </tr>
+
+    <% @cards.each do |card| %>
+      <% card.analysis.each do |an| %>
+        <tr>
+          <td><%= link_to card.id, medical_card_path %></td>
+          <td><%= an.id %></td>
+          <td><%= an.urine %></td>
+          <td><%= an.feces %></td>
+          <td><%= an.sperm %></td>
+          <td><%= an.biochemical %></td>
+          <td><%= an.blood_clotting %></td>
+          <td><%= an.protein %></td>
+          <td><%= an.diabetes %></td>
+          <td><%= an.hiv %></td>
+          <td><%= an.stds %></td>
+          <td><%= an.syphilis %></td>
+        </tr>
+      <% end %>  
+    <% end %>
+</table>

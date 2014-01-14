@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Email:</b>
+  <%= @micropost.email %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @micropost.body %>
+</p>
+
+
+<%= link_to 'Edit', edit_micropost_path(@micropost) %> |
+<%= link_to 'Back', microposts_path %> |
+<%= link_to 'Email', send_email_microposts_url(id: @micropost.id), method: :post %>
