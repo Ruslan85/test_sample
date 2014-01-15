@@ -10,9 +10,13 @@ SampleApp::Application.routes.draw do
     end
   end
 
-  resources :users
+  resources :users 
   resources :analyzes
-  resources :medical_cards
+  resources :medical_cards do
+    member do
+      get "user_inform"
+    end
+  end
 
   root to: 'static_pages#home'
 

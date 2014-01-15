@@ -1,0 +1,66 @@
+<h1>Hello</h1>
+
+<p id="notice"><%= notice %></p>
+
+
+<p>
+  <b>User:</b>
+  <%= @card.user_id %>
+</p>
+
+<p>
+  <b>Image:</b>
+  <%= image_tag @card.image.url(:thumb).to_s %>
+</p>
+<p>
+  <b>Birthday:</b>
+  <%= @card.birthday %>
+</p>
+
+<p>
+  <b>Birthplace:</b>
+  <%= @card.birthplace %>
+</p>
+
+<p>
+  <b>Sex:</b>
+  <%= @card.sex %>
+</p>
+
+<p>
+  <b>Blood_groop:</b>
+  <%= @card.blood_groop %>
+</p>
+
+<p>
+  <b>Diagnosis:</b>
+  <%= @card.diagnosis %>
+</p>
+
+<p>
+  <b>Hospitalization:</b>
+  <%= @card.hospitalization %>
+</p>
+
+<p>
+  <b>Medicament:</b>
+  <%= @card.medicament %>
+</p>
+
+<p>
+  <b>Patient_conditions:</b>
+  <%= @card.patient_conditions %>
+</p>
+
+<p>
+  <b>Temporary_incapacitated:</b>
+  <%= @card.temporary_incapacitated %>
+</p>
+
+<p>
+  <b>Treatment_status:</b>
+  <%= @card.treatment_status %>
+</p>
+
+<%= link_to 'Edit', edit_medical_card_path %>
+<%= link_to 'Back', medical_cards_path %>

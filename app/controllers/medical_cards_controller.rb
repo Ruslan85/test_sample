@@ -43,4 +43,8 @@ class MedicalCardsController < ApplicationController
 
     redirect_to medical_cards_url 
   end
+
+  def user_inform
+    @card = MedicalCard.find(params[:id])
+  end  
 end

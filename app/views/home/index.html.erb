@@ -8,6 +8,8 @@
 	</p>
 </div>
 
+<a href="#" data-toggle="tooltip" title="first tooltip">hover over me</a>
+
 <table class="table table-bordered">
 
   <tr>
@@ -28,7 +30,12 @@
     <% @cards.each do |card| %>
       <% card.analysis.each do |an| %>
         <tr>
-          <td><%= link_to card.id, medical_card_path %></td>
+       
+          <td>
+            <a rel="tooltip" title="че пасешь щегол?",
+              <%= link_to card.id, user_inform_medical_card_path(card) %>
+            </a>
+          </td>
           <td><%= an.id %></td>
           <td><%= an.urine %></td>
           <td><%= an.feces %></td>
