@@ -46,5 +46,7 @@ class MedicalCardsController < ApplicationController
 
   def user_inform
     @card = MedicalCard.find(params[:id])
+    @user = User.find(params[:id])
+    @analysis = Analysis.find(params[:id])
   end  
 end

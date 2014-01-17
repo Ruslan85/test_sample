@@ -16,9 +16,6 @@
   <div class="span6 offset3">
     <%= form_for @card, html: {multipart: true} do |f| %>
 
-      <%= f.label :user %>
-      <%= f.number_field :user_id %>
-
       <%= f.label :image %>
       <%= f.file_field :image %>
 

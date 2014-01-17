@@ -1,66 +1,106 @@
-<h1>Hello</h1>
+<h1>Hello my little friend</h1>
 
-<p id="notice"><%= notice %></p>
+<div class="row">
+  <div class="span4 offset2">
+    <p>
+      <b>User_id:</b>
+      <%= @card.user_id %>
+    </p></br>
 
+    <p>
+      <b>User name:</b>
+      <%= @user.name %>
+    </p></br>
 
-<p>
-  <b>User:</b>
-  <%= @card.user_id %>
-</p>
+    <p>
+      <b>User email:</b>
+      <%= @user.email %>
+    </p></br>
 
-<p>
-  <b>Image:</b>
-  <%= image_tag @card.image.url(:thumb).to_s %>
-</p>
-<p>
-  <b>Birthday:</b>
-  <%= @card.birthday %>
-</p>
+    <p>
+      <b>Birthday:</b>
+      <%= @card.birthday %>
+    </p></br>
 
-<p>
-  <b>Birthplace:</b>
-  <%= @card.birthplace %>
-</p>
+    <p>
+      <b>Birthplace:</b>
+      <%= @card.birthplace %>
+    </p></br>
+  </div>
 
-<p>
-  <b>Sex:</b>
-  <%= @card.sex %>
-</p>
+  <p>
+    <%= image_tag @card.image.url(:thumb).to_s, class: "img-circle" %>
+  </p>
+</div>
 
-<p>
-  <b>Blood_groop:</b>
-  <%= @card.blood_groop %>
-</p>
+  <h2>Medical Information</h2>
+  
+<table class="table table-striped">
 
-<p>
-  <b>Diagnosis:</b>
-  <%= @card.diagnosis %>
-</p>
+  <tr>
+      <th>Sex</th>
+      <th>Blood_groop</th>
+      <th>Diagnosis</th>
+      <th>Hospitalization</th>
+      <th>Medicament</th>
+      <th>Patient_conditions</th>
+      <th>Temporary_incapacitated</th>
+      <th>Treatment_status</th>
+      <th>Started with a medical card</th>
+  </tr>
 
-<p>
-  <b>Hospitalization:</b>
-  <%= @card.hospitalization %>
-</p>
+  <tr>       
+      <td><%= @card.sex %></td>
+      <td><%= @card.blood_groop %></td>
+      <td><%= @card.diagnosis %></td>
+      <td><%= @card.hospitalization %></td>
+      <td><%= @card.medicament %></td>
+      <td><%= @card.patient_conditions %></td>
+      <td><%= @card.temporary_incapacitated %></td>
+      <td><%= @card.treatment_status %></td>
+      <td><%= @card.created_at %></td>
+    </tr>
+</table>
 
-<p>
-  <b>Medicament:</b>
-  <%= @card.medicament %>
-</p>
+  <h2>Analyzes Information</h2>
 
-<p>
-  <b>Patient_conditions:</b>
-  <%= @card.patient_conditions %>
-</p>
+<table class="table table-striped">
 
-<p>
-  <b>Temporary_incapacitated:</b>
-  <%= @card.temporary_incapacitated %>
-</p>
+    <tr>
+        <th>Analysis_number</th>
+        <th>Urine</th>
+        <th>Feces</th>
+        <th>Sperm</th>
+        <th>Biochemical</th>
+        <th>Blood_clotting</th>
+        <th>Protein</th>
+        <th>Diabetes</th>
+        <th>HIV</th>
+        <th>STDS</th>
+        <th>Syphilis</th>
+        <th>Analysis created</th>
+    </tr>
 
-<p>
-  <b>Treatment_status:</b>
-  <%= @card.treatment_status %>
-</p>
+    
+  <% @card.analysis.each do |an| %>
+    <tr>       
+      <td><%= an.id %></td>
+      <td><%= an.urine %></td>
+      <td><%= an.feces %></td>
+      <td><%= an.sperm %></td>
+      <td><%= an.biochemical %></td>
+      <td><%= an.blood_clotting %></td>
+      <td><%= an.protein %></td>
+      <td><%= an.diabetes %></td>
+      <td><%= an.hiv %></td>
+      <td><%= an.stds %></td>
+      <td><%= an.syphilis %></td>
+      <td><%= an.created_at %></td>
+    </tr>
+  <% end %>  
+</table>
 
-<%= link_to 'Edit', edit_medical_card_path %>
-<%= link_to 'Back', medical_cards_path %>
+</br>
+
+<%= link_to 'Edit', edit_medical_card_path, class: "btn btn-warning" %> | 
+<%= link_to 'Back', medical_cards_path , class: "btn btn-success" %>
