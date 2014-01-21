@@ -16,22 +16,33 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
   validates :password_confirmation, presence: true
 
+  def User.new_remember_token
+    SecureRandom.urlsafe_base64
+  end
+
+  def User.encrypt(token)
+    Digest::SHA1.hexdigest(token.to_s)
+  end
 
   private
 
-  def create_default_medical_card
-    image_names = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]
+    def create_default_medical_card
+      image_names = ["1.jpg", "2.jpg", "3.jpg", "4.jpg"]
 
-    image_name = image_names[rand(0..3)] 
+      image_name = image_names[rand(0..3)] 
 
-  #  puts "Rails.root---------------#{Rails.root.join('app', 'assets', 'images', image_name)}------"
-  
-  # avatar = Rails.root.join('app', 'assets', 'images', image_name)
+     #  puts "Rails.root---------------#{Rails.root.join('app', 'assets', 'images', image_name)}------"
+    
+      # avatar = Rails.root.join('app', 'assets', 'images', image_name)
 
-  #  puts "Avatar---------------#{File.open(avatar)}------------"
+      #  puts "Avatar---------------#{File.open(avatar)}------------"
 
-    medical_card = MedicalCard.create!(user_id:id, image: File.open(Rails.root.join('app', 'assets', 'images', image_name)), birthday:"2000-10-10", birthplace:"Kazan", sex:"male", blood_groop:1, 
-      diagnosis:"fine", hospitalization:false, medicament:"aspirin", patient_conditions:"Easy", 
-      temporary_incapacitated:false, treatment_status:"fine")    
-  end
+      medical_card = MedicalCard.create!(user_id:id, image: File.open(Rails.root.join('app', 'assets', 'images', image_name)), birthday:"2000-10-10", birthplace:"Kazan", sex:"male", blood_groop:rand(1..4), 
+        diagnosis:"fine", hospitalization:false, medicament:"aspirin", patient_conditions:"Easy", 
+        temporary_incapacitated:false, treatment_status:"fine")    
+    end
+
+    def create_remember_token
+      self.remember_token = User.encrypt(User.new_remember_token)
+    end
 end

@@ -8,13 +8,18 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
+    @user = User.new(params[:user]) 
     if @user.save
-      UserMailer.registration(@user).deliver
+      sign_in @user
       flash[:success] = "Welcome to the Sample App!"
       redirect_to @user
     else
       render 'new'
     end
+  end
+
+  def destroy
+    sign_out
+    redirect_to root_url
   end
 end

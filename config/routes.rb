@@ -3,12 +3,14 @@ SampleApp::Application.routes.draw do
   get "home/index"
   
   resources :messages, only: [ :create, :index ]
+
+  resources :sessions, only: [:new, :create, :destroy]
   
   resources :microposts do
     collection do
       post "send_email"
     end
-  end
+  end 
 
   resources :users 
   resources :analyzes
@@ -20,7 +22,9 @@ SampleApp::Application.routes.draw do
 
   root to: 'static_pages#home'
 
-  match '/signup',  to: 'users#new'
+  match '/signup',  to: 'users#new',            via: 'get'
+  match '/signin',  to: 'sessions#new',         via: 'get'
+  match '/signout', to: 'sessions#destroy',     via: 'delete'
 
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
